@@ -6,6 +6,10 @@ Test script to verify bot configuration and dependencies
 import sys
 import os
 
+# Placeholder constants
+DEFAULT_BOT_TOKEN = 'your_bot_token_here'
+DEFAULT_API_KEY = 'your_megallm_api_key_here'
+
 
 def test_imports():
     """Test if all required packages can be imported"""
@@ -55,12 +59,12 @@ def test_env_file():
         bot_token = os.getenv('BOT_TOKEN')
         api_key = os.getenv('MEGALLM_API_KEY')
         
-        if bot_token and bot_token != 'your_bot_token_here':
+        if bot_token and bot_token != DEFAULT_BOT_TOKEN:
             print("✅ BOT_TOKEN is configured")
         else:
             print("⚠️  BOT_TOKEN is not configured (using default/placeholder)")
         
-        if api_key and api_key != 'your_megallm_api_key_here':
+        if api_key and api_key != DEFAULT_API_KEY:
             print("✅ MEGALLM_API_KEY is configured")
         else:
             print("⚠️  MEGALLM_API_KEY is not configured (using default/placeholder)")

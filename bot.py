@@ -6,7 +6,7 @@ Supports DM, Groups, and Inline Mode with MegaLLM API integration
 
 import os
 import logging
-from typing import Dict, List
+from typing import Dict, List, Optional
 from uuid import uuid4
 from dotenv import load_dotenv
 
@@ -39,12 +39,16 @@ DEFAULT_MODEL = os.getenv('DEFAULT_MODEL', 'gpt-4')
 MAX_TOKENS = int(os.getenv('MAX_TOKENS', '2000'))
 TEMPERATURE = float(os.getenv('TEMPERATURE', '0.7'))
 
+# Bot behavior constants
+MAX_CONVERSATION_HISTORY = 10  # Keep last 10 messages for context
+MIN_QUERY_LENGTH = 3  # Minimum characters for inline query
+
 # Store conversation history per user
 conversation_history: Dict[int, List[Dict]] = {}
 user_models: Dict[int, str] = {}
 
 
-async def call_megallm_api(messages: List[Dict], model: str = None) -> str:
+async def call_megallm_api(messages: List[Dict], model: Optional[str] = None) -> str:
     """Call MegaLLM API to get AI response"""
     if not model:
         model = DEFAULT_MODEL
@@ -226,9 +230,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         'content': message_text
     })
     
-    # Keep only last 10 messages for context (5 exchanges)
-    if len(conversation_history[user_id]) > 10:
-        conversation_history[user_id] = conversation_history[user_id][-10:]
+    # Keep only last N messages for context
+    if len(conversation_history[user_id]) > MAX_CONVERSATION_HISTORY:
+        conversation_history[user_id] = conversation_history[user_id][-MAX_CONVERSATION_HISTORY:]
     
     # Show typing indicator
     await update.message.chat.send_action(action="typing")
@@ -253,7 +257,7 @@ async def inline_query(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     """Handle inline queries - KEY FEATURE for inline mode."""
     query = update.inline_query.query
     
-    if not query or len(query.strip()) < 3:
+    if not query or len(query.strip()) < MIN_QUERY_LENGTH:
         # Show help message if query is too short
         results = [
             InlineQueryResultArticle(
