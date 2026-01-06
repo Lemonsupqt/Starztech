@@ -110,7 +110,7 @@ A **complete, production-ready Telegram bot** with advanced AI capabilities and 
 
 **Implementation:**
 ✅ **Advanced** - Multiple AI models, context tracking, smart group handling
-✅ **Multi-model** - 6 different AI models (GPT, Claude, Gemini)
+✅ **Multi-model** - 10 different AI models (GPT, Claude, Gemini, DeepSeek, Qwen)
 ✅ **DM support** - Full conversational AI with context
 ✅ **Group support** - Responds when mentioned or replied to
 ✅ **Mainly inline** - Complete inline mode with 3 response formats
@@ -127,7 +127,7 @@ A **complete, production-ready Telegram bot** with advanced AI capabilities and 
 - **Documentation**: ~20,000 words
 - **Dependencies**: 4 packages (all secure)
 - **Commands**: 5 (/start, /help, /model, /models, /clear)
-- **Supported Models**: 6
+- **Supported Models**: 10 (including unlimited DeepSeek & Qwen)
 - **Languages**: Python 3.11
 
 ### 🚀 Deployment Steps (Quick)

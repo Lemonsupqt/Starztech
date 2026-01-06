@@ -36,6 +36,10 @@
 | `claude-3-sonnet` | Anthropic | Balanced performance |
 | `claude-3-haiku` | Anthropic | Very fast responses |
 | `gemini-pro` | Google | Multimodal capabilities |
+| `deepseek-chat` ⭐ | DeepSeek | General purpose, **unlimited usage** |
+| `deepseek-coder` ⭐ | DeepSeek | Coding tasks, **unlimited usage** |
+| `qwen-max` ⭐ | Qwen | Most capable, **unlimited usage** |
+| `qwen-turbo` ⭐ | Qwen | Fast responses, **unlimited usage** |
 
 ## 🔧 Environment Variables
 

@@ -151,6 +151,14 @@ Select the AI response from the dropdown and it will be sent to the chat!
 - **Google**
   - `gemini-pro` - Google's flagship model
 
+- **DeepSeek (Unlimited Usage!) ⭐**
+  - `deepseek-chat` - General purpose, unlimited
+  - `deepseek-coder` - Specialized for coding, unlimited
+
+- **Qwen (Unlimited Usage!) ⭐**
+  - `qwen-max` - Most capable, unlimited
+  - `qwen-turbo` - Fast responses, unlimited
+
 Switch models anytime with `/model <model_name>`
 
 ## 🛠️ Technical Details

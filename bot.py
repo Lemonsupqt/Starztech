@@ -35,7 +35,8 @@ logger = logging.getLogger(__name__)
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 MEGALLM_API_KEY = os.getenv('MEGALLM_API_KEY')
 MEGALLM_API_URL = os.getenv('MEGALLM_API_URL', 'https://api.megallm.io/v1/chat/completions')
-DEFAULT_MODEL = os.getenv('DEFAULT_MODEL', 'gpt-4')
+# Default to deepseek-chat (unlimited on max plan) instead of gpt-4
+DEFAULT_MODEL = os.getenv('DEFAULT_MODEL', 'deepseek-chat')
 MAX_TOKENS = int(os.getenv('MAX_TOKENS', '2000'))
 TEMPERATURE = float(os.getenv('TEMPERATURE', '0.7'))
 
@@ -102,6 +103,11 @@ I'm an advanced multi-model chatbot powered by MegaLLM.
 
 🚀 **Inline Mode** is perfect for quick questions without leaving your current chat!
 
+⭐ **Unlimited Models Available:**
+• deepseek-chat, deepseek-coder
+• qwen-max, qwen-turbo
+Plus GPT-4, Claude, Gemini and more!
+
 Try it now: Type `@starztechbot what is AI?` in any chat!
 """
     await update.message.reply_text(welcome_message)
@@ -138,6 +144,8 @@ The inline mode will show you the AI response instantly!
 • claude-3-opus - Advanced reasoning
 • claude-3-sonnet - Balanced performance
 • gemini-pro - Google's model
+• deepseek-chat - Unlimited usage (recommended!)
+• qwen-max - Unlimited usage (recommended!)
 
 **Tips:**
 • Be specific with your questions
@@ -164,9 +172,17 @@ async def models_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 **Google Models:**
 • `gemini-pro` - Google's flagship model
 
+**DeepSeek Models (Unlimited!):**
+• `deepseek-chat` - Unlimited usage on max plan
+• `deepseek-coder` - Specialized for coding
+
+**Qwen Models (Unlimited!):**
+• `qwen-max` - Unlimited usage on max plan
+• `qwen-turbo` - Fast responses, unlimited
+
 **Usage:**
 Use `/model <model_name>` to switch models.
-Example: `/model claude-3-opus`
+Example: `/model deepseek-chat`
 
 **Current Model:**
 """
